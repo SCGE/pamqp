@@ -385,8 +385,11 @@ def _maybe_utf8(value):
         return bytes(value, 'utf-8')
 
     # Convert to unicode
-    _value = value.decode('utf-8')
-
+    try:
+        _value = value.decode('utf-8')
+    except UnicodeDecodeError:
+        _value = value
+        
     try:
         # Try and force it to be a str and return the str value
         return str(_value)
