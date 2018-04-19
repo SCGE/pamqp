@@ -316,6 +316,7 @@ def _embedded_value(value):
     elif value[0:1] == b'\x00':
         return 0, None
     else:
+        return 0, None
         raise ValueError('Unknown type: %r' % value[:1])
 
     return bytes_consumed + 1, value
